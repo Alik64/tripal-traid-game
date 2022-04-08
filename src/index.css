@@ -1,3 +1,7 @@
+:root{
+  --mainBlue : #0015ff
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
