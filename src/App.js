@@ -1,8 +1,8 @@
 
 import './App.css';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import Slider from './components/Slider';
+import Footer from './components/Footer/Header';
+import Header from './components/Header/Header';
+import Slider from './components/Slider/Slider';
 
 function App() {
   return (
