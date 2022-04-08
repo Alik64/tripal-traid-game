@@ -5,7 +5,7 @@ export default function Slider() {
     return (
         <section className={style.section}>
             <div className={style.slider}>
-                <div className={style.container}>
+                <div className={`${style.container} ${style.sliderContent}`}>
                     <h1 className={style.header}>Wow</h1>
                     <h2 className={style.subheader}>Wow.Wow.Wow</h2>
                     <div className={style.call}>
