@@ -13,8 +13,7 @@ export default function Text({
     disabled
 }) {
     return React.createElement(element, {
-        className: cn(s.root, className, { [s.strong]: strong }, { [s.italic]: italic }, { [s.disabled]: disabled }),
-
+        className: cn(className, { [s.strong]: strong }, { [s.italic]: italic }, { [s.disabled]: disabled }),
     }, children)
 }
 Text.propTypes = {
