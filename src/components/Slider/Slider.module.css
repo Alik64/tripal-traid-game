@@ -92,7 +92,7 @@
 }
 
 .image{
-    background-image: url('../../assets/Triple.png');
+    /* background-image: url('../../assets/Triple.png'); */
     width: 889px;
     height: 500px;
 }
