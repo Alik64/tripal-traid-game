@@ -1,9 +1,10 @@
 import s from './Heading.module.css'
 
-export default function Heading({ title }) {
+export default function Heading({ children }) {
+
 
 
     return (
-        <h1 className={s.root}>{title} !</h1>
+        <h1 className={s.root}>{children}</h1>
     )
 }
