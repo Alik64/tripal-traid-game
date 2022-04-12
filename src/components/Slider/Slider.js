@@ -2,16 +2,18 @@ import style from './Slider.module.css'
 import logoPng from '../../assets/Triple.png'
 import { ReactComponent as Logo } from '../../assets/logo.svg'
 import { Heading } from '../Heading'
+import Container from '../Container'
 
 export default function Slider() {
     return (
         <section className={style.section}>
             <div className={style.slider}>
-                <div className={`${style.container} ${style.sliderContent}`}>
-                    <Heading
-                        description="some random text"
-                        title="This is a header">
-                        Children
+                <Container className={style.sliderContent}>
+
+                    <Heading description="some random text" title="This is a header">
+                        <Heading>
+                            <span>Header in header</span>
+                        </Heading>
                     </Heading>
                     <Heading
                         description="some random text"
@@ -24,7 +26,8 @@ export default function Slider() {
                     <div className={style.call}>
                         <button className={style.button}>Wow</button>
                     </div>
-                </div>
+
+                </Container>
             </div>
         </section >
 
