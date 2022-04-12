@@ -10,14 +10,9 @@ export default function Slider() {
         <section className={style.section}>
             <div className={style.slider}>
                 <Container className={style.sliderContent}>
-
                     <Heading level={1} >
                         This is a header
                     </Heading>
-                    <Heading>
-
-                    </Heading>
-
 
                     <div className={style.image} >
                         <img src={logoPng} alt="Logo" />
