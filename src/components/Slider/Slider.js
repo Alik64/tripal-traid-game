@@ -1,5 +1,5 @@
 import style from './Slider.module.css'
-import logoPng from '../../assets/Triple.png'
+import logoPng from '../../assets/triple.png'
 import { ReactComponent as Logo } from '../../assets/logo.svg'
 import { Heading } from '../Heading'
 import Container from '../Container'
