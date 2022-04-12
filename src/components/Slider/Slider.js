@@ -1,4 +1,4 @@
-import { Heading } from '../Heading'
+import Heading from '../Heading'
 import Container from '../Container'
 
 import style from './Slider.module.css'
@@ -14,9 +14,10 @@ export default function Slider() {
                     <Heading level={1} >
                         This is a header
                     </Heading>
-                    <Heading level={2} className={style.subheader} black >
-                        Wow.Wow.Wow
+                    <Heading>
+
                     </Heading>
+
 
                     <div className={style.image} >
                         <img src={logoPng} alt="Logo" />
