@@ -10,7 +10,9 @@ export default function Slider() {
                 <div className={`${style.container} ${style.sliderContent}`}>
                     <Heading
                         description="some random text"
-                        title="This is a header" />
+                        title="This is a header">
+                        Children
+                    </Heading>
                     <Heading
                         description="some random text"
                         title="This is a second header" />
