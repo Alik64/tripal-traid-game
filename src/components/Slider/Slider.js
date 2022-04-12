@@ -1,8 +1,9 @@
-import style from './Slider.module.css'
-import logoPng from '../../assets/triple.png'
-import { ReactComponent as Logo } from '../../assets/logo.svg'
 import { Heading } from '../Heading'
 import Container from '../Container'
+
+import style from './Slider.module.css'
+
+import logoPng from '../../assets/triple.png'
 
 export default function Slider() {
     return (
@@ -10,15 +11,13 @@ export default function Slider() {
             <div className={style.slider}>
                 <Container className={style.sliderContent}>
 
-                    <Heading description="some random text" title="This is a header">
-                        <Heading>
-                            <span>Header in header</span>
-                        </Heading>
+                    <Heading level={1} >
+                        This is a header
                     </Heading>
-                    <Heading
-                        description="some random text"
-                        title="This is a second header" />
-                    <h2 className={style.subheader}>Wow.Wow.Wow</h2>
+                    <Heading level={2} className={style.subheader} black >
+                        Wow.Wow.Wow
+                    </Heading>
+
                     <div className={style.image} >
                         <img src={logoPng} alt="Logo" />
                     </div>
