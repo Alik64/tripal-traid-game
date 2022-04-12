@@ -8,6 +8,7 @@ export default function Slider() {
                 <div className={`${style.container} ${style.sliderContent}`}>
                     <h1 className={style.header}>Wow</h1>
                     <h2 className={style.subheader}>Wow.Wow.Wow</h2>
+                    <div className={style.image} />
                     <div className={style.call}>
                         <button className={style.button}>Wow</button>
                     </div>
