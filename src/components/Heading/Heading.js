@@ -1,7 +1,9 @@
 import s from './Heading.module.css'
 
-export default function Heading() {
+export default function Heading({ title }) {
+
+
     return (
-        <h1 className={s.root}>Wats'up !</h1>
+        <h1 className={s.root}>{title} !</h1>
     )
 }
