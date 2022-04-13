@@ -10,8 +10,9 @@ export default function Header() {
     const MENU = ['Menu 1', 'Menu 2', 'Menu 3', 'Menu 4']
     return (
         <header className={style.root}>
-            <div className={style.header} >
-                <Container className={style.header}>
+
+            <Container>
+                <div className={style.header} >
                     <div className={style.logo}>
                         <img src={logoPng} alt="logo" />
                     </div>
@@ -19,9 +20,10 @@ export default function Header() {
                         <li key={index}><a href="#">{item}</a></li>
                     ))}
                     </ul>
-                </Container>
+                </div>
+            </Container>
 
-            </div>
+
         </header>
     )
 }
