@@ -13,9 +13,14 @@ export default function Text({
     disabled
 }) {
     return React.createElement(element, {
-        className: cn(className, { [s.strong]: strong }, { [s.italic]: italic }, { [s.disabled]: disabled }),
+        className: cn(s.root, className, { [s.strong]: strong }, { [s.italic]: italic }, { [s.disabled]: disabled }),
     }, children)
 }
+
+Text.defaultProps = {
+    element: "p"
+}
+
 Text.propTypes = {
     element: PropTypes.oneOf(["div", "p", "span"]).isRequired,
     children: PropTypes.node,
