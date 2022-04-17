@@ -1,7 +1,7 @@
 import Heading from '../Heading'
 import Container from '../Container'
 
-import style from './Slider.module.css'
+import style from './Slider.module.scss'
 
 import logoPng from '../../assets/triple.png'
 
@@ -10,7 +10,7 @@ export default function Slider() {
         <section className={style.section}>
             <div className={style.slider}>
                 <Container className={style.sliderContent}>
-                    <Heading level={1} >
+                    <Heading level={1} className={style.header} >
                         This is a header
                     </Heading>
 

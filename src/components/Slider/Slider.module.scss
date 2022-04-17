@@ -16,7 +16,6 @@
     max-width: 1180px;
     width: 100%;
     overflow: hidden;
-    /* height: calc(100vh - 160px); */
 }
 
 .sliderContent {
@@ -37,6 +36,7 @@
     content: "";
     display: block;
     width: 30%;
+    max-width: 100px;
     position: relative;
     border-bottom: 1px solid #aaa;
     text-align: center;
@@ -44,7 +44,7 @@
 }
 
 .subheader {
-    
+
     font-size: 30px;
     margin-bottom: 60px;
 }
@@ -91,13 +91,15 @@
     }
 }
 
-.image img{
+.image img {
     width: 889px;
     height: 500px;
 }
+
 .image svg g {
     transition: all .25s ease-in-out;
 }
+
 .image:hover svg g {
     fill: pink;
 }

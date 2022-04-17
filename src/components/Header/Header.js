@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Container from '../Container'
-import style from './Header.module.css'
+import style from './Header.module.scss'
 
 import logoPng from '../../assets/triple.png'
 
@@ -11,7 +11,7 @@ export default function Header() {
     return (
         <header className={style.root}>
 
-            <Container>
+            <Container className={style.headerWrap} >
                 <div className={style.header} >
                     <div className={style.logo}>
                         <img src={logoPng} alt="logo" />
