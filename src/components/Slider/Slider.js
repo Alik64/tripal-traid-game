@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import Heading from '../Heading'
 import Container from '../Container'
 
@@ -5,7 +7,12 @@ import style from './Slider.module.scss'
 
 import logoPng from '../../assets/triple.png'
 
-export default function Slider() {
+const Slider = () => {
+
+    const [value, setValue] = useState(1)
+    const handleClick = () => {
+        setValue(prev => prev + 1)
+    }
     return (
         <section className={style.section}>
             <div className={style.slider}>
@@ -13,13 +20,16 @@ export default function Slider() {
                     <Heading level={1} className={style.header} >
                         This is a header
                     </Heading>
+                    <Heading level={2} className={style.header} >
+                        {value}
+                    </Heading>
 
-                    <div className={style.image} >
+                    {/* <div className={style.image} >
                         <img src={logoPng} alt="Logo" />
-                    </div>
+                    </div> */}
 
                     <div className={style.call}>
-                        <button className={style.button}>Wow</button>
+                        <button className={style.button} onClick={handleClick}>Wow</button>
                     </div>
 
                 </Container>
@@ -28,3 +38,5 @@ export default function Slider() {
 
     )
 }
+
+export default Slider
