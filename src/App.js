@@ -5,10 +5,21 @@ import Slider from './components/Slider/Slider';
 
 import Container from './components/Container';
 import Heading from './components/Heading';
-
+import CharacterCard from './components/CharacterCard';
 
 import s from './App.module.scss';
-import CharacterCard from './components/CharacterCard';
+
+const CHARACTER = {
+  id: 1011334,
+  name: 'Spider-Man',
+  description: 'Bitten by a radioactive spider, Peter Parker’s arachnid abilities give him amazing powers he uses to help others, while his personal life continues to offer plenty of obstacles.',
+  thumbnail: {
+    path: 'https://firebasestorage.googleapis.com/v0/b/it-course-84ddd.appspot.com/o/marvel-game%2Fspider-man.png?alt=media&token=8ff4b083-81ed-449f-823c-c79110735d1b'
+  },
+  humanName: 'Peter Parker',
+  isLike: false,
+};
+
 
 function App() {
   return (
@@ -28,14 +39,34 @@ function App() {
 
           <div className={s.cardWrap}>
             <div>
-              <CharacterCard />
+              <CharacterCard
+                id={CHARACTER.id}
+                name={CHARACTER.name}
+                src={CHARACTER.thumbnail.path}
+                humanName={CHARACTER.humanName}
+                description={CHARACTER.description}
+              />
             </div>
             <div>
-              <CharacterCard />
+              <CharacterCard
+                id={CHARACTER.id}
+                name={CHARACTER.name}
+                src={CHARACTER.thumbnail.path}
+                humanName={CHARACTER.humanName}
+                description={CHARACTER.description}
+              />
             </div>
             <div>
-              <CharacterCard />
+              <CharacterCard
+                id={CHARACTER.id}
+                name={CHARACTER.name}
+                src={CHARACTER.thumbnail.path}
+                humanName={CHARACTER.humanName}
+                description={CHARACTER.description}
+              />
             </div>
+
+
 
           </div>
 
