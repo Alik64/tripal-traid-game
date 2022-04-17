@@ -1,4 +1,8 @@
+import { useState } from 'react';
+
 import PropTypes from 'prop-types'
+import cn from 'classnames'
+
 import Heading from '../Heading';
 import Text from '../Text';
 
@@ -16,12 +20,15 @@ const CharacterCard = ({
 
 }) => {
 
-    const handleClick = () => {
-        console.log('hhhh', id)
+
+
+    const [active, setActive] = useState(false)
+    const likeHandler = () => {
+        setActive(prev => !prev)
     }
 
     return (
-        <div className={s.root} onClick={handleClick}>
+        <div className={s.root} >
             <img src={src} alt={name} className={s.cardImage} />
             <div className={s.cardDetails}>
                 <Heading level={2} className={s.cardName}>
@@ -35,7 +42,11 @@ const CharacterCard = ({
                 </Text>
 
                 <div className={s.cardMeta}>
-                    <div className={s.like}>
+                    <div
+                        onClick={likeHandler}
+                        className={cn(s.like, {
+                            [s.active]: active
+                        })} >
                         <Like />
                     </div>
                     <div className={s.readBio}>
