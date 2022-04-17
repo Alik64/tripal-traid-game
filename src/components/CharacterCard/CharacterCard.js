@@ -16,8 +16,12 @@ const CharacterCard = ({
 
 }) => {
 
+    const handleClick = () => {
+        console.log('hhhh', id)
+    }
+
     return (
-        <div className={s.root}>
+        <div className={s.root} onClick={handleClick}>
             <img src={src} alt={name} className={s.cardImage} />
             <div className={s.cardDetails}>
                 <Heading level={2} className={s.cardName}>
