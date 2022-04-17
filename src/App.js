@@ -5,9 +5,10 @@ import Slider from './components/Slider/Slider';
 
 import Container from './components/Container';
 import Heading from './components/Heading';
-import Text from './components/Text/Text';
+
 
 import s from './App.module.scss';
+import CharacterCard from './components/CharacterCard';
 
 function App() {
   return (
@@ -26,10 +27,16 @@ function App() {
           </div>
 
           <div className={s.cardWrap}>
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
+            <div>
+              <CharacterCard />
+            </div>
+            <div>
+              <CharacterCard />
+            </div>
+            <div>
+              <CharacterCard />
+            </div>
+
           </div>
 
         </Container>
