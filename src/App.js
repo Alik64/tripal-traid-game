@@ -8,6 +8,7 @@ import Heading from './components/Heading';
 import CharacterCard from './components/CharacterCard';
 
 import s from './App.module.scss';
+import { useState } from 'react';
 
 const CHARACTER = [
   {
@@ -74,6 +75,13 @@ const CHARACTER = [
 
 
 function App() {
+  const [character, setCharacter] = useState(CHARACTER)
+
+  const handleLikeClick = (id) => {
+
+
+
+  }
   return (
     <div className="App">
       <Header />
@@ -90,14 +98,15 @@ function App() {
           </div>
 
           <div className={s.cardWrap}>
-            {CHARACTER.map(card => (
+            {character.map(card => (
               <div key={card.id}>
                 <CharacterCard
                   id={card.id}
                   name={card.name}
                   src={card.thumbnail.path}
-                  humanName={CHARACTER.humanName}
+                  humanName={card.humanName}
                   description={card.description}
+                  onLikeClick={(id) => handleLikeClick(id)}
                 />
               </div>
             ))}

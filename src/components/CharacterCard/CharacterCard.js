@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import PropTypes from 'prop-types'
 import cn from 'classnames'
 
@@ -17,14 +15,13 @@ const CharacterCard = ({
     src,
     humanName,
     description,
+    onLikeClick,
+    isLike
 
 }) => {
 
-
-
-    const [active, setActive] = useState(false)
     const likeHandler = () => {
-        setActive(prev => !prev)
+        onLikeClick(id)
     }
 
     return (
@@ -45,7 +42,7 @@ const CharacterCard = ({
                     <div
                         onClick={likeHandler}
                         className={cn(s.like, {
-                            [s.active]: active
+                            [s.active]: isLike
                         })} >
                         <Like />
                     </div>
@@ -59,12 +56,18 @@ const CharacterCard = ({
     )
 }
 
+CharacterCard.defaultProps = {
+    isLike: false
+}
+
 CharacterCard.protoTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
     src: PropTypes.string,
     humanName: PropTypes.string,
     description: PropTypes.string,
+    onLikeClick: PropTypes.func,
+    isLike: PropTypes.bool
 }
 
 export default CharacterCard
