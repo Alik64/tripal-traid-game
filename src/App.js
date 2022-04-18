@@ -75,13 +75,24 @@ const CHARACTER = [
 
 
 function App() {
-  const [character, setCharacter] = useState(CHARACTER)
+  const [characters, setCharacters] = useState(CHARACTER)
 
+  // SPREAD + FIND()
   const handleLikeClick = (id) => {
-
-
-
+    let found = characters.find(obj => obj.id === id)
+    found.isLike = !found.isLike
+    setCharacters([...characters])
   }
+  // MAP()
+  // const handleLikeClick = (id) => {
+  //   setCharacters(prev => prev.map(item => {
+  //     if (item.id === id) {
+  //       item.isLike = !item.isLike
+  //     }
+  //     return item
+  //   }))
+  // }
+
   return (
     <div className="App">
       <Header />
@@ -98,7 +109,7 @@ function App() {
           </div>
 
           <div className={s.cardWrap}>
-            {character.map(card => (
+            {characters.map(card => (
               <div key={card.id}>
                 <CharacterCard
                   id={card.id}
@@ -107,6 +118,7 @@ function App() {
                   humanName={card.humanName}
                   description={card.description}
                   onLikeClick={(id) => handleLikeClick(id)}
+                  isLike={card.isLike}
                 />
               </div>
             ))}
