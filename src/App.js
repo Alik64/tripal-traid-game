@@ -9,6 +9,7 @@ import CharacterCard from './components/CharacterCard';
 
 import s from './App.module.scss';
 import { useState } from 'react';
+import Button from './components/Button/Button';
 
 const CHARACTERS = [
   {
