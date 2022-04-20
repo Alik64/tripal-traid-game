@@ -79,7 +79,6 @@ function App() {
 
   const handleLikeClick = (id) => {
 
-
     setCharacters(prevState => prevState.map(item => {
       if (id === item.id) {
         return {
@@ -92,7 +91,7 @@ function App() {
 
   }
 
-  console.log(CHARACTERS)
+
 
   return (
     <div className="App">
