@@ -10,7 +10,7 @@ import CharacterCard from './components/CharacterCard';
 import s from './App.module.scss';
 import { useState } from 'react';
 
-const CHARACTER = [
+const CHARACTERS = [
   {
     "id": 1011334,
     "name": "Spider-Man",
@@ -75,14 +75,24 @@ const CHARACTER = [
 
 
 function App() {
-  const [characters, setCharacters] = useState(CHARACTER)
+  const [characters, setCharacters] = useState(CHARACTERS)
 
   const handleLikeClick = (id) => {
-    let found = characters.find(obj => obj.id === id)
-    found.isLike = !found.isLike
-    setCharacters([...characters])
+
+
+    setCharacters(prevState => prevState.map(item => {
+      if (id === item.id) {
+        return {
+          ...item,
+          isLike: !item.isLike
+        }
+      }
+      return item
+    }))
+
   }
 
+  console.log(CHARACTERS)
 
   return (
     <div className="App">
