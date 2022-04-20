@@ -77,21 +77,12 @@ const CHARACTER = [
 function App() {
   const [characters, setCharacters] = useState(CHARACTER)
 
-  // SPREAD + FIND()
   const handleLikeClick = (id) => {
     let found = characters.find(obj => obj.id === id)
     found.isLike = !found.isLike
     setCharacters([...characters])
   }
-  // MAP()
-  // const handleLikeClick = (id) => {
-  //   setCharacters(prev => prev.map(item => {
-  //     if (item.id === id) {
-  //       item.isLike = !item.isLike
-  //     }
-  //     return item
-  //   }))
-  // }
+
 
   return (
     <div className="App">
