@@ -331,8 +331,6 @@ const Biography = ({
                             case 'img':
                                 component = <div className={s.bioImage}><img src={item.src} alt='Hero bio comics' /></div>
                                 break
-                            default:
-                                break
                         }
 
                         return <React.Fragment key={index}>{component}</React.Fragment>
