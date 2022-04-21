@@ -302,7 +302,7 @@ const Biography = ({
     let bioDescription = BIO[id]
 
     const handleBackClick = () => {
-        onGoBack(false)
+        onGoBack(null)
     }
 
 
