@@ -7,13 +7,18 @@ const Button = ({
     title,
     light,
     className,
+    onBtnClick
 }) => {
+    function clickHandler() {
+        onBtnClick()
+    }
+
     return (
         <button className={cn(
             s.root,
             className,
             { [s.light]: light }
-        )}>{title}</button>
+        )} onClick={clickHandler}>{title}</button>
     )
 }
 
@@ -24,6 +29,7 @@ Button.propTypes = {
     title: PropTypes.string,
     light: PropTypes.bool,
     className: PropTypes.string,
+    onBtnClick: PropTypes.func
 }
 export default Button
 
