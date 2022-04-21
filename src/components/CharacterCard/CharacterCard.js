@@ -7,6 +7,8 @@ import Text from '../Text';
 import { ReactComponent as Like } from './assets/heart.svg'
 
 import s from './CharacterCard.module.scss'
+import { useState } from 'react';
+import Biography from '../../pages/Biography';
 
 
 const CharacterCard = ({
@@ -16,6 +18,7 @@ const CharacterCard = ({
     humanName,
     description,
     onLikeClick,
+    onReadBio,
     isLike
 
 }) => {
@@ -23,6 +26,12 @@ const CharacterCard = ({
     const likeHandler = () => {
         onLikeClick(id)
     }
+
+
+    const readBioHandler = (id) => {
+        onReadBio(id)
+    }
+
 
     return (
         <div className={s.root} >
@@ -47,7 +56,7 @@ const CharacterCard = ({
                         <Like />
                     </div>
                     <div className={s.readBio}>
-                        <a href="#">Read bio</a>
+                        <a href="#" onClick={() => readBioHandler(id)}>Read bio</a>
                     </div>
                 </div>
             </div>
@@ -67,6 +76,7 @@ CharacterCard.protoTypes = {
     humanName: PropTypes.string,
     description: PropTypes.string,
     onLikeClick: PropTypes.func,
+    onReadBio: PropTypes.func,
     isLike: PropTypes.bool
 }
 

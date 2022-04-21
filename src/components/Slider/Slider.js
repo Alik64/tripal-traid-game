@@ -5,25 +5,6 @@ import Container from '../Container'
 
 import s from './Slider.module.scss'
 
-import Clock from '../../Clock'
-import Button from '../Button/Button'
-
-function Greeting() {
-    return (
-        <div>
-            Hello!
-        </div>
-    )
-}
-function Bye() {
-    return (
-        <div>
-            Bye bye!
-        </div>
-    )
-}
-
-
 const Slider = () => {
     const [isShow, setIsShow] = useState(true)
 
@@ -35,10 +16,6 @@ const Slider = () => {
     return (
         <section className={s.section}>
             <div className={s.slider}>
-                <Button
-                    className={s.button}
-                    title='Wow'
-                />
                 <Container className={s.sliderContent}>
                     <Heading level={1} className={s.header} >
                         This is a header
