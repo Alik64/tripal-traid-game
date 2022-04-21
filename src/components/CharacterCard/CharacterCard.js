@@ -7,9 +7,6 @@ import Text from '../Text';
 import { ReactComponent as Like } from './assets/heart.svg'
 
 import s from './CharacterCard.module.scss'
-import { useState } from 'react';
-import Biography from '../../pages/Biography';
-
 
 const CharacterCard = ({
     id,
@@ -76,7 +73,7 @@ CharacterCard.protoTypes = {
     humanName: PropTypes.string,
     description: PropTypes.string,
     onLikeClick: PropTypes.func,
-    onReadBio: PropTypes.func.isRequired(),
+    onReadBio: PropTypes.func.isRequired,
     isLike: PropTypes.bool
 }
 
