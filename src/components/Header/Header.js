@@ -8,11 +8,11 @@ import logoPng from '../../assets/triple.png'
 
 export default function Header() {
     const MENU = ['Menu 1', 'Menu 2', 'Menu 3', 'Menu 4']
-    const [classNameCond, setClassNameCond] = useState()
+    const [classNameCond, setClassNameCond] = useState(false)
 
     useEffect(() => {
         function detectScrollY() {
-            window.scrollY > 60 ? setClassNameCond(s.small) : setClassNameCond(null)
+            window.scrollY > 60 ? setClassNameCond(true) : setClassNameCond(false)
         }
 
         window.addEventListener('scroll', detectScrollY)
@@ -26,7 +26,7 @@ export default function Header() {
         <header className={s.root}>
 
             <Container className={s.headerWrap} >
-                <div className={cn(s.header, classNameCond)} >
+                <div className={cn(s.header, { [s.small]: classNameCond })} >
                     <div className={s.logo}>
                         <img src={logoPng} alt="logo" />
                     </div>
