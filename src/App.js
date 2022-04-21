@@ -9,8 +9,10 @@ import CharacterCard from './components/CharacterCard';
 
 import s from './App.module.scss';
 import { useState } from 'react';
+import Biography from './pages/Biography';
 
-const CHARACTER = [
+
+const CHARACTERS = [
   {
     "id": 1011334,
     "name": "Spider-Man",
@@ -75,49 +77,73 @@ const CHARACTER = [
 
 
 function App() {
-  const [characters, setCharacters] = useState(CHARACTER)
+  const [characters, setCharacters] = useState(CHARACTERS)
+  const [bioId, setBioId] = useState(null)
 
   const handleLikeClick = (id) => {
-    let found = characters.find(obj => obj.id === id)
-    found.isLike = !found.isLike
-    setCharacters([...characters])
+    setCharacters(prevState => prevState.map(item => {
+      if (id === item.id) {
+        return {
+          ...item,
+          isLike: !item.isLike
+        }
+      }
+      return item
+    }))
+
+  }
+
+  const handleReadBio = (id) => {
+    setBioId(id)
+  }
+  const handleGoBack = (bool) => {
+    setBioId(bool)
   }
 
 
   return (
     <div className="App">
       <Header />
-      <Slider />
-      <section className={s.cardSection}>
-        <Container>
-          <div className={s.cardTitle}>
-            <Heading backLine >
-              Marvel cards
-            </Heading>
-            <Heading level={2} >
-              Collect your best five
-            </Heading>
-          </div>
+      {bioId
+        ? <>
+          <Biography id={bioId} onGoBack={handleGoBack} />
+        </>
 
-          <div className={s.cardWrap}>
-            {characters.map(card => (
-              <div key={card.id}>
-                <CharacterCard
-                  id={card.id}
-                  name={card.name}
-                  src={card.thumbnail.path}
-                  humanName={card.humanName}
-                  description={card.description}
-                  onLikeClick={(id) => handleLikeClick(id)}
-                  isLike={card.isLike}
-                />
+        : <>
+          <Slider />
+          <section className={s.cardSection}>
+            <Container>
+              <div className={s.cardTitle}>
+                <Heading backLine >
+                  Marvel cards
+                </Heading>
+                <Heading level={2} >
+                  Collect your best five
+                </Heading>
               </div>
-            ))}
 
-          </div>
+              <div className={s.cardWrap}>
+                {characters.map(card => (
+                  <div key={card.id}>
+                    <CharacterCard
+                      id={card.id}
+                      name={card.name}
+                      src={card.thumbnail.path}
+                      humanName={card.humanName}
+                      description={card.description}
+                      onLikeClick={(id) => handleLikeClick(id)}
+                      onReadBio={(id) => handleReadBio(id)}
+                      isLike={card.isLike}
+                    />
+                  </div>
+                ))}
 
-        </Container>
-      </section>
+              </div>
+
+            </Container>
+          </section>
+        </>
+      }
       <Footer />
     </div >
   );

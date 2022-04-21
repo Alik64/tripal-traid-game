@@ -8,7 +8,6 @@ import { ReactComponent as Like } from './assets/heart.svg'
 
 import s from './CharacterCard.module.scss'
 
-
 const CharacterCard = ({
     id,
     name,
@@ -16,6 +15,7 @@ const CharacterCard = ({
     humanName,
     description,
     onLikeClick,
+    onReadBio,
     isLike
 
 }) => {
@@ -23,6 +23,12 @@ const CharacterCard = ({
     const likeHandler = () => {
         onLikeClick(id)
     }
+
+
+    const readBioHandler = () => {
+        onReadBio(id)
+    }
+
 
     return (
         <div className={s.root} >
@@ -47,7 +53,7 @@ const CharacterCard = ({
                         <Like />
                     </div>
                     <div className={s.readBio}>
-                        <a href="#">Read bio</a>
+                        <a href="#" onClick={readBioHandler}>Read bio</a>
                     </div>
                 </div>
             </div>
@@ -67,6 +73,7 @@ CharacterCard.protoTypes = {
     humanName: PropTypes.string,
     description: PropTypes.string,
     onLikeClick: PropTypes.func,
+    onReadBio: PropTypes.func.isRequired,
     isLike: PropTypes.bool
 }
 
