@@ -1,22 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Container from '../Container'
-import style from './Header.module.scss'
-
+import s from './Header.module.scss'
+import cn from 'classnames'
 import logoPng from '../../assets/triple.png'
 
 
 export default function Header() {
     const MENU = ['Menu 1', 'Menu 2', 'Menu 3', 'Menu 4']
-    return (
-        <header className={style.root}>
+    const [classNameCond, setClassNameCond] = useState()
 
-            <Container className={style.headerWrap} >
-                <div className={style.header} >
-                    <div className={style.logo}>
+    useEffect(() => {
+        function detectScrollY() {
+            window.scrollY > 60 ? setClassNameCond(s.small) : setClassNameCond(null)
+        }
+
+        window.addEventListener('scroll', detectScrollY)
+
+        return () => window.removeEventListener('scroll', detectScrollY)
+    }, [])
+
+
+
+    return (
+        <header className={s.root}>
+
+            <Container className={s.headerWrap} >
+                <div className={cn(s.header, classNameCond)} >
+                    <div className={s.logo}>
                         <img src={logoPng} alt="logo" />
                     </div>
-                    <ul className={style.nav}> {MENU.map((item, index) => (
+                    <ul className={s.nav}> {MENU.map((item, index) => (
                         <li key={index}><a href="#">{item}</a></li>
                     ))}
                     </ul>
