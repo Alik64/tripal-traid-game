@@ -320,10 +320,9 @@ const Biography = ({
 
                         switch (item.type) {
                             case 'h1':
-                                component = <Heading>{item.text}</Heading>
-                                break
                             case 'h2':
-                                component = <Heading level={2}>{item.text}</Heading>
+                                let lvl = item.type.slice(1)
+                                component = <Heading level={Number(lvl)}>{item.text}</Heading>
                                 break
                             case 'paragraph':
                                 component = <Text>{item.text}</Text>
