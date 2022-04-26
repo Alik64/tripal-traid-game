@@ -20,13 +20,13 @@ const CharacterCard = ({
 
 }) => {
 
-    const likeHandler = () => {
-        onLikeClick(id)
+    const handleClick = () => {
+       onLikeClick && onLikeClick(id)
     }
 
 
-    const readBioHandler = () => {
-        onReadBio(id)
+    const handleReadBioClick = () => {
+        onReadBio && onReadBio(id)
     }
 
 
@@ -46,14 +46,14 @@ const CharacterCard = ({
 
                 <div className={s.cardMeta}>
                     <div
-                        onClick={likeHandler}
+                        onClick={handleClick}
                         className={cn(s.like, {
                             [s.active]: isLike
                         })} >
                         <Like />
                     </div>
                     <div className={s.readBio}>
-                        <a href="#" onClick={readBioHandler}>Read bio</a>
+                        <a href="#" onClick={handleReadBioClick}>Read bio</a>
                     </div>
                 </div>
             </div>
@@ -66,14 +66,14 @@ CharacterCard.defaultProps = {
     isLike: false
 }
 
-CharacterCard.protoTypes = {
+CharacterCard.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
     src: PropTypes.string,
     humanName: PropTypes.string,
     description: PropTypes.string,
     onLikeClick: PropTypes.func,
-    onReadBio: PropTypes.func.isRequired,
+    onReadBio: PropTypes.func,
     isLike: PropTypes.bool
 }
 
