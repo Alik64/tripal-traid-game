@@ -6,6 +6,7 @@ import Button from "../../components/Button";
 import Heading from "../../components/Heading";
 import Text from "../../components/Text";
 import { BIO } from "../../components/constants/bio";
+import Layout from "../../components/Layout/Layout";
 
 const Biography = ({ id, onBackClick }) => {
   let bioDescription = BIO[id];

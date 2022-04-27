@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import Heading from "../Heading";
 import Container from "../Container";
 
@@ -7,12 +5,6 @@ import s from "./Slider.module.scss";
 import Button from "../Button";
 
 const Slider = () => {
-  const [isShow, setIsShow] = useState(true);
-
-  const handleClick = () => {
-    setIsShow((prev) => !prev);
-  };
-
   return (
     <section className={s.section}>
       <div className={s.slider}>
