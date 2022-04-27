@@ -21,10 +21,12 @@ const CharacterCard = ({
 }) => {
   const handleClick = () => {
     onLikeClick && onLikeClick(id);
+    console.log(id);
   };
 
   const handleReadBioClick = () => {
     onReadBio && onReadBio(id);
+    console.log(id);
   };
 
   return (

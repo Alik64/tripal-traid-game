@@ -2,11 +2,8 @@ import { useState } from "react";
 
 import Container from "../../components/Container";
 import CharacterCard from "../../components/CharacterCard";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
 import Heading from "../../components/Heading";
-import Slider from "../../components/Slider/Slider";
-import Layout from "../../components/Layout/Layout";
+import Slider from "../../components/Slider";
 
 import s from "./Main.module.scss";
 import { CHARACTERS } from "../../components/constants/characters";
