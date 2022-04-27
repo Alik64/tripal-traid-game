@@ -7,7 +7,7 @@ import Text from "../../components/Text";
 
 import s from "./Biography.module.scss";
 
-import { BIO } from "../../components/constants/bio";
+import { BIO } from "../../constants/bio";
 
 const Biography = () => {
   const { id } = useParams();

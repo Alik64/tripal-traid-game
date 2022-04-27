@@ -36,13 +36,13 @@ export default function Header() {
               <Link to="/">Main</Link>
             </li>
             <li>
-              <Link to="/bio">Bio</Link>
+              <Link to="/characters">Characters</Link>
             </li>
             <li>
-              <Link to="/">Menu 3</Link>
+              <Link to="/about">About Game</Link>
             </li>
             <li>
-              <Link to="/">Menu 4</Link>
+              <Link to="/contacts">Contacts</Link>
             </li>
           </ul>
         </Container>

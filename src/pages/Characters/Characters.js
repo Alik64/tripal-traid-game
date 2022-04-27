@@ -1,14 +1,14 @@
 import { useState } from "react";
 
+import Heading from "../../components/Heading";
 import Container from "../../components/Container";
 import CharacterCard from "../../components/CharacterCard";
-import Heading from "../../components/Heading";
-import Slider from "../../components/Slider";
 
-import s from "./Main.module.scss";
+import s from "./Characters.module.scss";
+
 import { CHARACTERS } from "../../constants/characters";
 
-const Main = () => {
+const Characters = () => {
   const [characters, setCharacters] = useState(CHARACTERS);
 
   const handleLikeClick = (id) => {
@@ -26,8 +26,7 @@ const Main = () => {
   };
 
   return (
-    <>
-      <Slider />
+    <div className={s.root}>
       <section className={s.cardSection}>
         <Container>
           <div className={s.cardTitle}>
@@ -51,8 +50,8 @@ const Main = () => {
           </div>
         </Container>
       </section>
-    </>
+    </div>
   );
 };
 
-export default Main;
+export default Characters;
