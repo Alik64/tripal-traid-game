@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import cn from "classnames";
 
@@ -9,7 +9,8 @@ import logoPng from "../../assets/triple.png";
 import s from "./Header.module.scss";
 
 export default function Header() {
-  const MENU = ["Menu 1", "Menu 2", "Menu 3", "Menu 4"];
+  const navigate = useNavigate();
+
   const [small, setSmall] = useState(false);
 
   useEffect(() => {
@@ -20,12 +21,14 @@ export default function Header() {
 
     return () => window.removeEventListener("scroll", detectScrollY);
   }, []);
-
+  const handleLogoClick = () => {
+    navigate("/");
+  };
   return (
     <header className={s.root}>
       <div className={cn(s.header, { [s.small]: small })}>
         <Container className={s.headerWrap}>
-          <div className={s.logo}>
+          <div className={s.logo} onClick={handleLogoClick}>
             <img src={logoPng} alt="logo" />
           </div>
           <ul className={s.nav}>
