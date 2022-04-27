@@ -1,7 +1,6 @@
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Slider from "./components/Slider/Slider";
-
 import Container from "./components/Container";
 import Heading from "./components/Heading";
 import CharacterCard from "./components/CharacterCard";
@@ -9,6 +8,7 @@ import CharacterCard from "./components/CharacterCard";
 import s from "./App.module.scss";
 import { useState } from "react";
 import Biography from "./pages/Biography";
+import { Route, Routes } from "react-router-dom";
 
 const CHARACTERS = [
   {
@@ -103,6 +103,12 @@ function App() {
   const handleGoBack = (bool) => {
     setCharacterId(bool);
   };
+
+  return (
+    <Routes>
+      <Route path="/" element={<div>main</div>} />
+    </Routes>
+  );
 
   return (
     <div className="App">
