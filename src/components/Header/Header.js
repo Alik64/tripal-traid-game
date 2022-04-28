@@ -1,43 +1,52 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-import Container from '../Container'
-import s from './Header.module.scss'
-import cn from 'classnames'
-import logoPng from '../../assets/triple.png'
+import cn from "classnames";
 
+import Container from "../Container";
+import logoPng from "../../assets/triple.png";
+
+import s from "./Header.module.scss";
 
 export default function Header() {
-    const MENU = ['Menu 1', 'Menu 2', 'Menu 3', 'Menu 4']
-    const [classNameCond, setClassNameCond] = useState(false)
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        function detectScrollY() {
-            window.scrollY > 60 ? setClassNameCond(true) : setClassNameCond(false)
-        }
+  const [small, setSmall] = useState(false);
 
-        window.addEventListener('scroll', detectScrollY)
+  useEffect(() => {
+    function detectScrollY() {
+      window.scrollY > 60 ? setSmall(true) : setSmall(false);
+    }
+    window.addEventListener("scroll", detectScrollY);
 
-        return () => window.removeEventListener('scroll', detectScrollY)
-    }, [])
-
-
-
-    return (
-        <header className={s.root}>
-
-            <Container className={s.headerWrap} >
-                <div className={cn(s.header, { [s.small]: classNameCond })} >
-                    <div className={s.logo}>
-                        <img src={logoPng} alt="logo" />
-                    </div>
-                    <ul className={s.nav}> {MENU.map((item, index) => (
-                        <li key={index}><a href="#">{item}</a></li>
-                    ))}
-                    </ul>
-                </div>
-            </Container>
-
-
-        </header>
-    )
+    return () => window.removeEventListener("scroll", detectScrollY);
+  }, []);
+  const handleLogoClick = () => {
+    navigate("/");
+  };
+  return (
+    <header className={s.root}>
+      <div className={cn(s.header, { [s.small]: small })}>
+        <Container className={s.headerWrap}>
+          <div className={s.logo} onClick={handleLogoClick}>
+            <img src={logoPng} alt="logo" />
+          </div>
+          <ul className={s.nav}>
+            <li>
+              <Link to="/">Main</Link>
+            </li>
+            <li>
+              <Link to="/characters">Characters</Link>
+            </li>
+            <li>
+              <Link to="/about">About Game</Link>
+            </li>
+            <li>
+              <Link to="/contacts">Contacts</Link>
+            </li>
+          </ul>
+        </Container>
+      </div>
+    </header>
+  );
 }

@@ -1,0 +1,69 @@
+.root {
+  padding: 32px 0;
+  display: flex;
+  justify-content: center;
+  min-height: calc(100vh - 160px);
+}
+.dev {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo {
+  width: 70px;
+  pointer-events: none;
+  animation: App-logo-spin infinite 15s linear;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+}
+.imgWrap {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 20px;
+}
+.avatar {
+  margin: 0 auto;
+  margin-left: -25%; //centers the image
+  height: 100%;
+  width: auto;
+}
+
+.socials {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.socials_link {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 24px;
+  transition: all 0.4s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.socials_ico {
+  width: 50px;
+  margin-right: 10px;
+}
