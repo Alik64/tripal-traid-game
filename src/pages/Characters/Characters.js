@@ -30,8 +30,7 @@ const Characters = () => {
       <section className={s.cardSection}>
         <Container>
           <div className={s.cardTitle}>
-            <Heading backLine>Marvel cards</Heading>
-            <Heading level={2}>Collect your best five</Heading>
+            <Heading backLine>Characters</Heading>
           </div>
           <div className={s.cardWrap}>
             {characters.map((card) => (
