@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useMatch } from "react-router-dom";
 
 import Header from "../Header";
 import Footer from "../Footer";
@@ -7,14 +7,19 @@ import s from "./Layout.module.scss";
 import Container from "../Container";
 
 const Layout = () => {
+  const match = useMatch({ path: "/" });
   return (
     <>
       <Header />
-      <div className={s.container}>
-        <Container>
-          <Outlet />
-        </Container>
-      </div>
+      {match !== null ? (
+        <Outlet />
+      ) : (
+        <div className={s.container}>
+          <Container>
+            <Outlet />
+          </Container>
+        </div>
+      )}
       <Footer />
     </>
   );
