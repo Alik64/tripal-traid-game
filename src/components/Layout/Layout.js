@@ -1,22 +1,23 @@
 import { Outlet } from "react-router-dom";
-import PropTypes from "prop-types";
 
 import Header from "../Header";
 import Footer from "../Footer";
 
 import s from "./Layout.module.scss";
+import Container from "../Container";
 
-const Layout = ({ children }) => {
+const Layout = () => {
   return (
-    <div className={s.root}>
+    <>
       <Header />
-      <Outlet />
+      <div className={s.container}>
+        <Container>
+          <Outlet />
+        </Container>
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 
-Layout.propTypes = {
-  children: PropTypes.node,
-};
 export default Layout;
