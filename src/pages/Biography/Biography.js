@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 import Container from "../../components/Container";
 import Button from "../../components/Button";
@@ -18,6 +18,9 @@ const Biography = () => {
       state: { from: id },
     });
   };
+  if (!BIO[id]) {
+    return <Navigate to="/characters" replace />;
+  }
   return (
     <section className={s.root}>
       <Container>
