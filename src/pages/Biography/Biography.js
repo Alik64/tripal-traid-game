@@ -14,7 +14,10 @@ const Biography = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const handleGoBackClick = () => {
-    navigate(-1);
+    navigate("/", {
+      replace: true,
+      state: "123",
+    });
   };
   return (
     <section className={s.root}>
