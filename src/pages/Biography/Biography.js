@@ -15,8 +15,7 @@ const Biography = () => {
   const navigate = useNavigate();
   const handleGoBackClick = () => {
     navigate("/", {
-      replace: true,
-      state: "123",
+      state: { from: id },
     });
   };
   return (
