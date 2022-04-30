@@ -1,7 +1,8 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import Container from "../../components/Container";
+import Button from "../../components/Button";
 import Heading from "../../components/Heading";
 import Text from "../../components/Text";
 
@@ -11,10 +12,18 @@ import { BIO } from "../../constants/bio";
 
 const Biography = () => {
   const { id } = useParams();
-
+  const navigate = useNavigate();
+  const handleGoBackClick = () => {
+    navigate(-1);
+  };
   return (
     <section className={s.root}>
       <Container>
+        <div>
+          <Button onClick={handleGoBackClick} color="black">
+            Go back
+          </Button>
+        </div>
         {BIO[id].map((item, index) => {
           let component;
           switch (item.type) {
