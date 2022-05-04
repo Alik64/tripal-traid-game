@@ -18,6 +18,9 @@
   display: inline-flex;
   align-items: center;
 
+  a:focus-visible {
+    outline: none;
+  }
   svg {
     display: block;
     width: 25px;
@@ -30,7 +33,4 @@
   &:hover svg {
     opacity: 1;
   }
-}
-.headingWrap a:focus-visible {
-  outline: none;
 }
