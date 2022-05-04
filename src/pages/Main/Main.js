@@ -7,11 +7,8 @@ import Slider from "../../components/Slider";
 
 import s from "./Main.module.scss";
 import { CHARACTERS } from "../../constants/characters";
-import { useLocation } from "react-router-dom";
 
 const Main = () => {
-  const location = useLocation();
-  console.log(location.state);
   const [characters, setCharacters] = useState(CHARACTERS);
 
   const handleLikeClick = (id) => {
@@ -23,11 +20,11 @@ const Main = () => {
             isLike: !item.isLike,
           };
         }
+
         return item;
       })
     );
   };
-
   return (
     <>
       <Slider />

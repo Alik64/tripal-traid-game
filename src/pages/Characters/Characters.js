@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import Heading from "../../components/Heading";
-
 import CharacterCard from "../../components/CharacterCard";
 
 import s from "./Characters.module.scss";
