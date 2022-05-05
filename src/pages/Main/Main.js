@@ -20,11 +20,11 @@ const Main = () => {
             isLike: !item.isLike,
           };
         }
+
         return item;
       })
     );
   };
-
   return (
     <>
       <Slider />
