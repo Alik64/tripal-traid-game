@@ -26,7 +26,9 @@ const Characters = () => {
 
   return (
     <div className={s.root}>
-      <Heading backLine>Characters</Heading>
+      <Heading level={1} backLine>
+        Characters
+      </Heading>
       <div className={s.cardWrap}>
         {characters.map((card) => (
           <div key={card.id}>

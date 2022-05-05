@@ -1,11 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import {
-  Link,
-  Navigate,
-  useLocation,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import React from "react";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 
 import Container from "../../components/Container";
 import Button from "../../components/Button";
@@ -19,7 +13,6 @@ import { BIO } from "../../constants/bio";
 
 const Biography = () => {
   const { id } = useParams();
-  const { pathname, hash } = useLocation();
 
   const navigate = useNavigate();
   const handleGoBackClick = () => {
@@ -41,7 +34,6 @@ const Biography = () => {
         </div>
         {BIO[id].map((item, index) => {
           let component;
-
           switch (item.type) {
             case "h1":
             case "h2":
