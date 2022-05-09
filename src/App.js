@@ -15,10 +15,19 @@ function App() {
   useEffect(() => {
     if (hash) {
       const el = document.getElementById(hash.slice(1));
-      el.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
+
+      window.addEventListener(
+        "load",
+        () => {
+          el.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+        },
+        {
+          once: true,
+        }
+      );
     } else {
       window.scrollTo(0, 0);
     }
