@@ -14,23 +14,17 @@
   padding: 12px 0;
   text-align: center;
 }
-.headingWrap {
-  display: inline-flex;
-  align-items: center;
-
-  a:focus-visible {
-    outline: none;
+.heading {
+  &:hover {
+    .anchorLink {
+      opacity: 1;
+    }
   }
-  svg {
-    display: block;
-    width: 25px;
-    height: auto;
-    padding-bottom: 10px;
-    margin-left: 5px;
-    opacity: 0;
-    transition: all 0.3s ease-in-out;
-  }
-  &:hover svg {
-    opacity: 1;
-  }
+}
+.anchorLink {
+  margin-left: 5px;
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+  width: 0.75em;
+  height: 0.75em;
 }

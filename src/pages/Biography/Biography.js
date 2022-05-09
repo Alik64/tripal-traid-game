@@ -5,7 +5,7 @@ import Container from "../../components/Container";
 import Button from "../../components/Button";
 import Heading from "../../components/Heading";
 import Text from "../../components/Text";
-import { ReactComponent as LinkIcon } from "../../assets/link_icon.svg";
+import { ReactComponent as AnchorLink } from "../../assets/link_icon.svg";
 
 import s from "./Biography.module.scss";
 
@@ -15,6 +15,7 @@ const Biography = () => {
   const { id } = useParams();
 
   const navigate = useNavigate();
+
   const handleGoBackClick = () => {
     navigate("/", {
       state: { from: id },
@@ -33,35 +34,50 @@ const Biography = () => {
           </Button>
         </div>
         {BIO[id].map((item, index) => {
-          let component;
           switch (item.type) {
             case "h1":
-            case "h2":
-              let level = item.type.slice(1);
-              const id = item.text.replace(/\s/g, "_");
-              component = (
-                <div className={s.headingWrap}>
-                  <Heading level={Number(level)}>{item.text}</Heading>
-                  <Link to={`#${id}`} id={id}>
-                    <LinkIcon />
+              return (
+                <Heading
+                  key={index}
+                  level={1}
+                  className={s.heading}
+                  id={item.text.split(" ").join("_")}
+                >
+                  {item.text}
+                  <Link to={`#${item.text.split(" ").join("_")}`}>
+                    <AnchorLink className={s.anchorLink} />
                   </Link>
+                </Heading>
+              );
+            case "h2":
+              return (
+                <div key={index}>
+                  <Heading
+                    level={2}
+                    className={s.heading}
+                    id={item.text.split(" ").join("_")}
+                  >
+                    {item.text}
+                    <Link to={`#${item.text.split(" ").join("_")}`}>
+                      <AnchorLink className={s.anchorLink} />
+                    </Link>
+                  </Heading>
                 </div>
               );
-              break;
+
             case "paragraph":
-              component = <Text>{item.text}</Text>;
-              break;
+              return <Text key={index}>{item.text}</Text>;
+
             case "img":
-              component = (
-                <div className={s.imgWrap}>
+              return (
+                <div key={index} className={s.imgWrap}>
                   <img src={item.src} alt="Hero bio comics" />
                 </div>
               );
-              break;
+
             default:
-              return <Text>{item.text}</Text>;
+              return <Text key={index}>{item.text}</Text>;
           }
-          return <React.Fragment key={index}>{component}</React.Fragment>;
         })}
       </Container>
     </section>
