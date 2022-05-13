@@ -5,8 +5,9 @@ import Biography from "./pages/Biography";
 import Layout from "./components/Layout";
 import About from "./pages/About/";
 import Contacts from "./pages/Contacts";
-import Characters from "./pages/Characters/Characters";
+import Characters from "./pages/Characters";
 import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
 import { useEffect } from "react";
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         <Route path="contacts" element={<Contacts />} />
         <Route path="*" element={<NotFound />} />
       </Route>
+      <Route path="/login" element={<Login />} />
     </Routes>
   );
 }
