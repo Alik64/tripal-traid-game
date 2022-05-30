@@ -8,6 +8,7 @@ import { ReactComponent as IconPen } from "./assets/icon-pen.svg";
 import logo from "./assets/logo.png";
 
 import s from "./Login.module.scss";
+import Input from "../../components/Input/Input";
 
 const Login = () => {
   const [toggle, setToggle] = useState(false);
@@ -90,7 +91,8 @@ const Login = () => {
             </Heading>
             <form className={s.card__login_form} onSubmit={handleLoginSubmit}>
               <div className={s.card__input_container}>
-                <input
+                <Input
+                  label="Email"
                   type="email"
                   name="login_email"
                   id="login_email"
@@ -99,11 +101,11 @@ const Login = () => {
                   value={loginForm.login_email}
                   onChange={handleLoginInputChange}
                 />
-                <label htmlFor="login-email">Email</label>
                 <div className={s.bar}></div>
               </div>
               <div className={s.card__input_container}>
-                <input
+                <Input
+                  label="Password"
                   type="password"
                   name="login_password"
                   id="login_password"
@@ -112,7 +114,6 @@ const Login = () => {
                   onChange={handleLoginInputChange}
                   required
                 />
-                <label htmlFor="password">Password</label>
                 <div className={s.bar}></div>
               </div>
               <div className={s.card__button_container}>
