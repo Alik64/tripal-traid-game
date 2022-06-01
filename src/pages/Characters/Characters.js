@@ -1,28 +1,13 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { CharactersContext } from "../../src/context/CharactersContext";
 
 import Heading from "../../components/Heading";
 import CharacterCard from "../../components/CharacterCard";
 
 import s from "./Characters.module.scss";
 
-import { CHARACTERS } from "../../constants/characters";
-
 const Characters = () => {
-  const [characters, setCharacters] = useState(CHARACTERS);
-
-  const handleLikeClick = (id) => {
-    setCharacters((prevState) =>
-      prevState.map((item) => {
-        if (id === item.id) {
-          return {
-            ...item,
-            isLike: !item.isLike,
-          };
-        }
-        return item;
-      })
-    );
-  };
+  const { characters, handleLikeClick } = useContext(CharactersContext);
 
   return (
     <div className={s.root}>
