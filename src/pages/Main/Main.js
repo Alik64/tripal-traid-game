@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { CharactersContext } from "../../src/context/CharactersContext";
 
 import Container from "../../components/Container";
 import CharacterCard from "../../components/CharacterCard";
@@ -6,25 +7,10 @@ import Heading from "../../components/Heading";
 import Slider from "../../components/Slider";
 
 import s from "./Main.module.scss";
-import { CHARACTERS } from "../../constants/characters";
 
 const Main = () => {
-  const [characters, setCharacters] = useState(CHARACTERS);
+  const { characters, handleLikeClick } = useContext(CharactersContext);
 
-  const handleLikeClick = (id) => {
-    setCharacters((prevState) =>
-      prevState.map((item) => {
-        if (id === item.id) {
-          return {
-            ...item,
-            isLike: !item.isLike,
-          };
-        }
-
-        return item;
-      })
-    );
-  };
   return (
     <>
       <Slider />

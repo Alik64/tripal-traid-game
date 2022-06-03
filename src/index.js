@@ -4,10 +4,13 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 
 import App from "./App";
+import CharactersProvider from "./src/context/CharactersContext";
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <CharactersProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </CharactersProvider>,
   document.getElementById("root")
 );
