@@ -6,6 +6,7 @@ import s from "./Input.module.scss";
 
 const Input = ({
   type,
+  darkMode,
   required,
   label,
   name,
@@ -21,16 +22,21 @@ const Input = ({
   };
 
   return (
-    <div className={cn(s.root, className)}>
+    <div className={cn(s.root, className, { [s.dark]: darkMode })}>
       <input
+        className={cn({ [s.dark]: darkMode })}
         type={type}
         name={name}
         required={required}
         value={value}
         onChange={handleChange}
       />
-      <label className={cn({ [s.valid]: value.length > 0 })}>{label}</label>
-      <div className={s.bar} />
+      <label
+        className={cn({ [s.valid]: value.length > 0 }, { [s.dark]: darkMode })}
+      >
+        {label}
+      </label>
+      <div className={cn(s.bar, { [s.dark]: darkMode })} />
     </div>
   );
 };
@@ -47,6 +53,7 @@ Input.propTypes = {
   name: PropTypes.string,
   onChange: PropTypes.func,
   className: PropTypes.string,
+  darkMode: PropTypes.bool,
 };
 
 export default Input;
