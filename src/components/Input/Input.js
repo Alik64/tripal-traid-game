@@ -10,17 +10,14 @@ const Input = ({
   required,
   label,
   name,
-  onChange,
-  defaultValue,
   className,
+  placeholder,
+  value,
+  onChange,
 }) => {
-  const [value, setValue] = useState(defaultValue ? defaultValue : "");
-
   const handleChange = (e) => {
-    setValue(e.target.value);
     onChange && onChange(e);
   };
-
   return (
     <div className={cn(s.root, className, { [s.dark]: darkMode })}>
       <input
@@ -28,14 +25,11 @@ const Input = ({
         type={type}
         name={name}
         required={required}
+        placeholder={placeholder}
         value={value}
-        onChange={handleChange}
+        onChange={(e) => handleChange(e)}
       />
-      <label
-        className={cn({ [s.valid]: value.length > 0 }, { [s.dark]: darkMode })}
-      >
-        {label}
-      </label>
+      <label className={cn({ [s.dark]: darkMode })}>{label}</label>
       <div className={cn(s.bar, { [s.dark]: darkMode })} />
     </div>
   );
@@ -47,13 +41,14 @@ Input.defaultProps = {
 };
 Input.propTypes = {
   type: PropTypes.oneOf(["text", "email", "password", "number"]),
-  defaultValue: PropTypes.string,
+  value: PropTypes.string,
   required: PropTypes.bool,
   label: PropTypes.string.isRequired,
   name: PropTypes.string,
-  onChange: PropTypes.func,
   className: PropTypes.string,
   darkMode: PropTypes.bool,
+  placeholder: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 export default Input;
