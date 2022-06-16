@@ -7,10 +7,10 @@ import App from "./App";
 import CharactersProvider from "./src/context/CharactersContext";
 
 ReactDOM.render(
-  <CharactersProvider>
-    <BrowserRouter>
+  <BrowserRouter>
+    <CharactersProvider>
       <App />
-    </BrowserRouter>
-  </CharactersProvider>,
+    </CharactersProvider>
+  </BrowserRouter>,
   document.getElementById("root")
 );

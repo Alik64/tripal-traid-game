@@ -1,55 +1,54 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
-
-import s from "./Input.module.scss";
 import cn from "classnames";
 
+import s from "./Input.module.scss";
+
 const Input = ({
-  label,
   type,
-  value,
-  name,
-  id,
-  placeholder,
+  darkMode,
   required,
-  onChange,
+  label,
+  name,
   className,
+  placeholder,
+  value,
+  onChange,
 }) => {
   const handleChange = (e) => {
     onChange && onChange(e);
   };
-
   return (
-    <div className={cn(s.root, s[className])}>
+    <div className={cn(s.root, className, { [s.dark]: darkMode })}>
       <input
-        className={cn(s[className])}
+        className={cn({ [s.dark]: darkMode })}
         type={type}
         name={name}
-        value={value}
-        onChange={(e) => handleChange(e)}
-        id={id}
         required={required}
         placeholder={placeholder}
+        value={value}
+        onChange={(e) => handleChange(e)}
       />
-      {label ? <label htmlFor={id}>{label}</label> : null}
-      <div className={s.bar}></div>
+      <label className={cn({ [s.dark]: darkMode })}>{label}</label>
+      <div className={cn(s.bar, { [s.dark]: darkMode })} />
     </div>
   );
 };
 
 Input.defaultProps = {
-  placeholder: " ",
-  required: true,
+  type: "text",
+  required: false,
 };
 Input.propTypes = {
-  label: PropTypes.string,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(["text", "email", "password", "number"]),
   value: PropTypes.string,
-  name: PropTypes.string,
-  id: PropTypes.string,
-  placeholder: PropTypes.string,
   required: PropTypes.bool,
-  onChange: PropTypes.func,
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string,
   className: PropTypes.string,
+  darkMode: PropTypes.bool,
+  placeholder: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 export default Input;

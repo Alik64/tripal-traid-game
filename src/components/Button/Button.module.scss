@@ -1,37 +1,100 @@
 .root {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 6px;
-    background-color: transparent;
-    color: #ffffff;
-    border: 1px solid #ffffff;
-    padding: 8px 13px;
-    font-size: 20px;
-    transition: background 0.15s linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 8px 13px;
+  font-size: 20px;
+  transition: background 0.15s linear;
 
-    &:hover {
-        background: rgba(255, 255, 255, 0.1);
-        cursor: pointer;
-    }
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+  }
+  span {
+    position: relative;
+    z-index: 1;
+    transition: 0.3s ease;
+  }
 }
 
-
-
+// COLOR -----------
 .default {
-    color: #ffffff;
-    border: 1px solid #ffffff;
+  color: #ffffff;
+  border: 1px solid #ffffff;
 
-    &:hover {
-        background: rgba(255, 255, 255, 0.1); 
-    }
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
 }
 
 .black {
-    color: #000;
-    border: 1px solid #000;
+  color: #000;
+  border: 1px solid #000;
 
-    &:hover {
-        background: rgba(0, 0, 0, 0.1); 
-    }
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.primary {
+  color: #2546ed;
+  outline: 0;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  background: 0;
+
+  border: 2px solid #e3e3e3;
+
+  overflow: hidden;
+  transition: 0.3s ease;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    background: #2546ed;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    margin: -15px 0 0 -15px;
+    opacity: 0;
+    transition: 0.3s ease;
+  }
+  &:hover,
+  &:focus {
+    border-color: #2546ed;
+    color: #2546ed;
+  }
+  &:active,
+  &:active:focus {
+    color: #fff;
+  }
+  &:active::before,
+  &:focus::before {
+    opacity: 1;
+    transform: scale(10);
+  }
+  &:hover span {
+    color: #2546ed;
+  }
+  &:active span,
+  &:focus span {
+    color: #ffffff;
+  }
+}
+// SIZE -----------
+.large {
+  width: 240px;
+  padding: 20px 0;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
 }

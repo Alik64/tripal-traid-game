@@ -3,22 +3,24 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 import s from "./Button.module.scss";
 
-const Button = ({ onClick, children, color }) => {
+const Button = ({ color, size, onClick, children }) => {
   const handleClick = () => {
     onClick && onClick();
   };
   return (
-    <button className={cn(s.root, s[color])} onClick={handleClick}>
-      {children}
+    <button className={cn(s.root, s[color], s[size])} onClick={handleClick}>
+      <span>{children}</span>
     </button>
   );
 };
 Button.defaultProps = {
   color: "default",
+  size: "default",
 };
 Button.propTypes = {
+  color: PropTypes.oneOf(["default", "black", "primary"]),
+  size: PropTypes.oneOf(["default", "large"]),
   onClick: PropTypes.func,
   children: PropTypes.node,
-  color: PropTypes.oneOf(["default", "black"]),
 };
 export default Button;
