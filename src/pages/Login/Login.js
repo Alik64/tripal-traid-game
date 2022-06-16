@@ -1,78 +1,45 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import cn from "classnames";
 
 import Footer from "../../components/Footer";
+import Button from "../../components/Button";
 import Heading from "../../components/Heading";
+import Form from "../../components/Form";
+import Input from "../../components/Input/Input";
 
 import { ReactComponent as IconPen } from "./assets/icon-pen.svg";
 import logo from "./assets/logo.png";
 
 import s from "./Login.module.scss";
-import Input from "../../components/Input/Input";
 
 const Login = () => {
   const [toggle, setToggle] = useState(false);
-  const [error, setError] = useState("");
-
-  const loginFormInitState = {
-    login_email: "",
-    login_password: "",
-  };
-  const registerFormInitState = {
-    register_email: "",
-    register_password: "",
-    register_repeat: "",
-  };
-
-  const [loginForm, setLoginForm] = useState(loginFormInitState);
-
-  const [registerForm, setRegisterForm] = useState(registerFormInitState);
+  const [error, setError] = useState(false);
 
   // -------------- LOGIN ---------------------//
-
-  const handleLoginInputChange = (e) => {
-    setLoginForm((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
+  const handleLoginSubmit = (values) => {
+    console.log(values);
   };
-  const handleLoginSubmit = (e) => {
-    e.preventDefault();
-    console.log(loginForm);
-    setLoginForm(loginFormInitState);
-  };
-
   // -------------- REGISTER ---------------------//
-
-  const handleRegisterInputChange = (e) => {
-    setRegisterForm((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const handleRegisterSubmit = (e) => {
-    e.preventDefault();
-    if (registerForm.register_password !== registerForm.register_repeat) {
-      setError("Password doesn't match");
+  const handleRegisterSubmit = (values) => {
+    if (values.password !== values.repeatPassword) {
+      setError(true);
       return;
     }
-
-    console.log(registerForm);
-    setRegisterForm(registerFormInitState);
-    setError("");
+    console.log(values.password);
+    setError(false);
   };
-
   // -------------- TOGGLE + CLOSE ---------------------//
 
-  const handleToggle = () => {
+  const handleToggleClick = () => {
     setToggle(true);
-    setLoginForm(loginFormInitState);
   };
   const handleClose = () => {
     setToggle(false);
-    setRegisterForm(registerFormInitState);
   };
+
+  const loginInput = useRef();
+
   return (
     <>
       <div className={s.root}>
@@ -80,52 +47,29 @@ const Login = () => {
           <img src={logo} alt="Game logo" />
         </div>
         <div
-          className={cn(s.login__container, {
+          className={cn(s.container, {
             [s.active]: toggle,
           })}
         >
-          <div className={s.card}></div>
+          <div className={s.card} ref={loginInput} />
           <div className={s.card}>
             <Heading className={s.card__title} level={1}>
               Login
             </Heading>
-            <form className={s.card__login_form} onSubmit={handleLoginSubmit}>
-              <div className={s.card__input_container}>
-                <Input
-                  label="Email"
-                  type="email"
-                  name="login_email"
-                  id="login_email"
-                  placeholder=" "
-                  required
-                  value={loginForm.login_email}
-                  onChange={handleLoginInputChange}
-                />
-                <div className={s.bar}></div>
-              </div>
-              <div className={s.card__input_container}>
-                <Input
-                  label="Password"
-                  type="password"
-                  name="login_password"
-                  id="login_password"
-                  placeholder=" "
-                  value={loginForm.login_password}
-                  onChange={handleLoginInputChange}
-                  required
-                />
-                <div className={s.bar}></div>
-              </div>
+
+            <Form onSubmit={handleLoginSubmit}>
+              <Input type="email" label="Email" name="email" />
+              <Input type="password" label="Password" name="password" />
               <div className={s.card__button_container}>
-                <button>
-                  <span>go</span>
-                </button>
+                <Button color="primary" size="large">
+                  Go
+                </Button>
               </div>
-            </form>
+            </Form>
           </div>
           <div className={cn(s.card, s.alt)}>
             <div
-              onClick={handleToggle}
+              onClick={handleToggleClick}
               className={cn(s.card__toggle, {
                 [s.active]: toggle,
               })}
@@ -136,56 +80,27 @@ const Login = () => {
               Register
               <div onClick={handleClose} className={s.close}></div>
             </Heading>
-            <form
-              className={s.card__register_form}
-              onSubmit={handleRegisterSubmit}
-            >
-              <div className={s.card__input_container}>
-                <input
-                  type="email"
-                  name="register_email"
-                  id="register_email"
-                  placeholder=" "
-                  value={registerForm.register_email}
-                  onChange={handleRegisterInputChange}
-                  required
-                />
-                <label htmlFor="register_email">Email</label>
-                <div className={s.bar}></div>
-              </div>
-              <div className={s.card__input_container}>
-                <input
-                  type="password"
-                  name="register_password"
-                  id="register_password"
-                  placeholder=" "
-                  value={registerForm.register_password}
-                  onChange={handleRegisterInputChange}
-                  required
-                />
-                <label htmlFor="register_password">Password</label>
-                <div className={s.bar}></div>
-              </div>
-              <div className={s.card__input_container}>
-                <input
-                  type="password"
-                  name="register_repeat"
-                  id="register_repeat"
-                  placeholder=" "
-                  value={registerForm.register_repeat}
-                  onChange={handleRegisterInputChange}
-                  required
-                />
-                <label htmlFor="register_password">Repeat password</label>
-                <div className={s.bar}></div>
-                <div className={s.error}>{error}</div>
-              </div>
+            <Form onSubmit={handleRegisterSubmit}>
+              <Input darkMode type="email" label="Email" name="email" />
+              <Input
+                darkMode
+                type="password"
+                label="Password"
+                name="password"
+              />
+              <Input
+                darkMode
+                type="password"
+                label="Repeat password"
+                name="repeatPassword"
+              />
+              {error && <div className={s.error}>Passwords doesn't match</div>}
               <div className={s.card__button_container}>
-                <button>
-                  <span>register</span>
-                </button>
+                <Button color="primary" size="large">
+                  Register
+                </Button>
               </div>
-            </form>
+            </Form>
           </div>
         </div>
       </div>
