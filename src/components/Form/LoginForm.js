@@ -1,11 +1,13 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import s from "./Form.module.scss";
-import React from "react";
-import Input from "../Input/Input";
-import Button from "../Button";
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
-const LoginForm = ({ onSubmit }) => {
+import Button from "../Button";
+import Input from "../Input/Input";
+
+import cn from "classnames";
+import s from "./Form.module.scss";
+
+const LoginForm = ({ onSubmit, toggle, className }) => {
   const loginFormInitState = {
     email: "",
     password: "",
@@ -23,8 +25,15 @@ const LoginForm = ({ onSubmit }) => {
     onSubmit && onSubmit(loginForm);
     setLoginForm(loginFormInitState);
   };
+  // Observe toggle to empty state.
+  useEffect(() => {
+    if (toggle) {
+      setLoginForm(loginFormInitState);
+    }
+  }, [toggle]);
+
   return (
-    <form onSubmit={handleLoginSubmit} className={s.root}>
+    <form onSubmit={handleLoginSubmit} className={cn(s.root, className)}>
       <Input
         type="email"
         label="Email"
@@ -32,7 +41,9 @@ const LoginForm = ({ onSubmit }) => {
         placeholder=" "
         value={loginForm.email}
         onChange={handleLoginInputChange}
+        required
       />
+
       <Input
         type="password"
         label="Password"
@@ -41,6 +52,7 @@ const LoginForm = ({ onSubmit }) => {
         value={loginForm.password}
         onChange={handleLoginInputChange}
       />
+
       <div className={s.button_container}>
         <Button color="primary" size="large">
           Go
@@ -50,4 +62,9 @@ const LoginForm = ({ onSubmit }) => {
   );
 };
 
+LoginForm.propTypes = {
+  onSubmit: PropTypes.func,
+  className: PropTypes.string,
+  toggle: PropTypes.bool,
+};
 export default LoginForm;

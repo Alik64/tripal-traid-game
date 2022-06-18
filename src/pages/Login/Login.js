@@ -13,7 +13,6 @@ import RegisterForm from "../../components/Form/RegisterForm";
 
 const Login = () => {
   const [toggle, setToggle] = useState(false);
-  const [cleanInputs, setCleanInputs] = useState(false);
 
   // -------------- LOGIN ---------------------//
   const handleLoginSubmit = (values) => {
@@ -27,11 +26,9 @@ const Login = () => {
 
   const handleToggleClick = () => {
     setToggle(true);
-    setCleanInputs(true);
   };
   const handleClose = () => {
     setToggle(false);
-    setCleanInputs(true);
   };
 
   return (
@@ -50,7 +47,7 @@ const Login = () => {
             <Heading className={s.card__title} level={1}>
               Login
             </Heading>
-            <LoginForm onSubmit={handleLoginSubmit} />
+            <LoginForm onSubmit={handleLoginSubmit} toggle={toggle} />
           </div>
           <div className={cn(s.card, s.alt)}>
             <div
@@ -65,7 +62,7 @@ const Login = () => {
               Register
               <div onClick={handleClose} className={s.close}></div>
             </Heading>
-            <RegisterForm onSubmit={handleRegisterSubmit} />
+            <RegisterForm onSubmit={handleRegisterSubmit} toggle={toggle} />
           </div>
         </div>
       </div>
