@@ -1,11 +1,13 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import s from "./Form.module.scss";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+
 import Input from "../Input/Input";
 import Button from "../Button";
 
-const RegisterForm = ({ onSubmit }) => {
+import cn from "classnames";
+import s from "./Form.module.scss";
+
+const RegisterForm = ({ onSubmit, className, toggle }) => {
   const registerFormInitState = {
     email: "",
     password: "",
@@ -34,8 +36,14 @@ const RegisterForm = ({ onSubmit }) => {
     setSuccess(true);
   };
 
+  useEffect(() => {
+    if (toggle) {
+      setRegisterForm(registerFormInitState);
+      setSuccess(false);
+    }
+  }, [toggle]);
   return (
-    <form onSubmit={handleRegisterSubmit} className={s.root}>
+    <form onSubmit={handleRegisterSubmit} className={cn(s.root, className)}>
       <Input
         type="email"
         label="Email"
@@ -44,6 +52,7 @@ const RegisterForm = ({ onSubmit }) => {
         value={registerForm.email}
         onChange={handleRegisterInputChange}
         darkMode
+        required
       />
       <Input
         type="password"
@@ -73,5 +82,9 @@ const RegisterForm = ({ onSubmit }) => {
     </form>
   );
 };
-
+RegisterForm.propTypes = {
+  onSubmit: PropTypes.func,
+  className: PropTypes.string,
+  toggle: PropTypes.bool,
+};
 export default RegisterForm;
