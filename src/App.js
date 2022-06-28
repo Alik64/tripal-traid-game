@@ -9,6 +9,7 @@ import Characters from "./pages/Characters";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import { useEffect } from "react";
+import { RequireAuth } from "./src/context/AuthContext";
 
 function App() {
   const { pathname, hash } = useLocation();
@@ -36,7 +37,14 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route
+        path="/"
+        element={
+          <RequireAuth>
+            <Layout />
+          </RequireAuth>
+        }
+      >
         <Route index element={<Main />} />
         <Route path="characters" element={<Characters />} />
         <Route path="characters/:id" element={<Biography />} />

@@ -10,13 +10,19 @@ import logo from "./assets/logo.png";
 import s from "./Login.module.scss";
 import LoginForm from "../../components/Form/LoginForm";
 import RegisterForm from "../../components/Form/RegisterForm";
+import { useAuth } from "../../src/context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [toggle, setToggle] = useState(false);
-
+  const auth = useAuth();
+  const navigate = useNavigate();
   // -------------- LOGIN ---------------------//
   const handleLoginSubmit = (values) => {
     console.log(values);
+    auth.signIn(values, () => {
+      navigate("/");
+    });
   };
   // -------------- REGISTER ---------------------//
   const handleRegisterSubmit = (values) => {
