@@ -12,11 +12,19 @@ import LoginForm from "../../components/Form/LoginForm";
 import RegisterForm from "../../components/Form/RegisterForm";
 import { useAuth } from "../../src/context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Login = () => {
   const [toggle, setToggle] = useState(false);
   const auth = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (auth.user !== null) {
+      navigate("/");
+    }
+  }, []);
+
   // -------------- LOGIN ---------------------//
   const handleLoginSubmit = (values) => {
     console.log(values);
