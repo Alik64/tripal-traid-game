@@ -11,17 +11,25 @@ import s from "./Login.module.scss";
 import LoginForm from "../../components/Form/LoginForm";
 import RegisterForm from "../../components/Form/RegisterForm";
 import { useAuth } from "../../src/context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useMemo } from "react";
 
 const Login = () => {
   const [toggle, setToggle] = useState(false);
   const auth = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const fromPath = useMemo(() => {
+    if (location.state?.from) {
+      return location.state?.from;
+    }
+    return "/";
+  }, [location.state]);
 
   useEffect(() => {
     if (auth.user !== null) {
-      navigate("/");
+      navigate(fromPath);
     }
   }, []);
 
@@ -29,7 +37,7 @@ const Login = () => {
   const handleLoginSubmit = (values) => {
     console.log(values);
     auth.signIn(values, () => {
-      navigate("/");
+      navigate(fromPath);
     });
   };
   // -------------- REGISTER ---------------------//
