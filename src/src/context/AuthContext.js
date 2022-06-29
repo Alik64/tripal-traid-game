@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 export const AuthContext = React.createContext();
 
@@ -34,9 +34,10 @@ export function useAuth() {
 }
 export function RequireAuth({ children }) {
   const auth = useAuth();
-  console.log("auth : ", auth);
+  const location = useLocation();
+
   if (auth.user === null) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/login" state={{ from: location.pathname }} replace />;
   }
   return children;
 }
