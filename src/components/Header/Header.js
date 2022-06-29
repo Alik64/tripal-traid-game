@@ -7,6 +7,7 @@ import Container from "../Container";
 import logoPng from "../../assets/triple.png";
 
 import s from "./Header.module.scss";
+import { useAuth } from "../../src/context/AuthContext";
 const MENU = [
   {
     title: "Main",
@@ -28,6 +29,7 @@ const MENU = [
 
 export default function Header() {
   const navigate = useNavigate();
+  const auth = useAuth();
 
   const [small, setSmall] = useState(false);
 
@@ -63,6 +65,11 @@ export default function Header() {
                 </NavLink>
               </li>
             ))}
+            {auth.user && (
+              <li>
+                <span onClick={() => auth.signOut()}>logOut</span>
+              </li>
+            )}
           </ul>
         </Container>
       </div>

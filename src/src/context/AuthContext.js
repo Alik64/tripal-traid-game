@@ -14,10 +14,17 @@ function AuthProvider({ children }) {
     setUser(values);
     callback && callback();
   };
+
+  const signOut = (callback) => {
+    localStorage.removeItem("userEmail");
+    setUser(null);
+    callback && callback();
+  };
+
   const value = {
     user,
     signIn,
-    signOut: () => {},
+    signOut,
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
