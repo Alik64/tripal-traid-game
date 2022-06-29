@@ -54,18 +54,18 @@
   position: relative;
 }
 
-.nav li a {
-  transition: color 0.2s linear;
-}
-
-.nav li:hover a {
+.nav li:hover a,
+.nav li:hover span {
   color: red;
 }
 
-.nav li a {
+.nav li a,
+.nav li span {
+  cursor: pointer;
   padding: 21px;
   color: initial;
   text-decoration: initial;
+  transition: color 0.2s linear;
 }
 
 .nav li a.active {
