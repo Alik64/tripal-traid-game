@@ -17,6 +17,7 @@ import { useMemo } from "react";
 
 const Login = () => {
   const [toggle, setToggle] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const auth = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -35,10 +36,17 @@ const Login = () => {
 
   // -------------- LOGIN ---------------------//
   const handleLoginSubmit = (values) => {
-    console.log(values);
-    auth.signIn(values, () => {
-      navigate(fromPath);
-    });
+    setLoading(true);
+    setTimeout(
+      (values) => {
+        auth.signIn(values, () => {
+          setLoading(false);
+          navigate(fromPath);
+        });
+      },
+      3000,
+      values
+    );
   };
   // -------------- REGISTER ---------------------//
   const handleRegisterSubmit = (values) => {
@@ -69,7 +77,11 @@ const Login = () => {
             <Heading className={s.card__title} level={1}>
               Login
             </Heading>
-            <LoginForm onSubmit={handleLoginSubmit} toggle={toggle} />
+            <LoginForm
+              onSubmit={handleLoginSubmit}
+              toggle={toggle}
+              disabled={isLoading}
+            />
           </div>
           <div className={cn(s.card, s.alt)}>
             <div

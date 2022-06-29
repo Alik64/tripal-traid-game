@@ -7,7 +7,7 @@ import Input from "../Input/Input";
 import cn from "classnames";
 import s from "./Form.module.scss";
 
-const LoginForm = ({ onSubmit, toggle, className }) => {
+const LoginForm = ({ onSubmit, toggle, className, disabled }) => {
   const loginFormInitState = {
     email: "",
     password: "",
@@ -54,7 +54,7 @@ const LoginForm = ({ onSubmit, toggle, className }) => {
       />
 
       <div className={s.button_container}>
-        <Button color="primary" size="large">
+        <Button color="primary" size="large" disabled={disabled}>
           Go
         </Button>
       </div>
@@ -66,5 +66,6 @@ LoginForm.propTypes = {
   onSubmit: PropTypes.func,
   className: PropTypes.string,
   toggle: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 export default LoginForm;
